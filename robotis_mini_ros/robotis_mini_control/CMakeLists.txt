@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   geometry_msgs
   sensor_msgs
-  robotis_mini_description
   gazebo_msgs
   gazebo_plugins
   gazebo_ros
