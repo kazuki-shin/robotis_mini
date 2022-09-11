@@ -6,7 +6,7 @@
 
   <xacro:macro name="robotis_mini_leg" params="side parent reflect">
     <xacro:robotis_mini_servo_fixed name="${side}_hip" parent="${parent}"
-        xyz="0 -0.024 0" rpy="0 0 ${M_PI}" initial_rotation="0" reflect="${-reflect}"/>
+        xyz="0 0 0" rpy="0 0 ${M_PI}" initial_rotation="0" reflect="${-reflect}"/>
     <xacro:robotis_mini_spd7v4 name="${side}_groin" parent="${side}_hip_link"
         xyz="0 0 0.0165" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
     <xacro:robotis_mini_spd3b5 name="${side}_thigh_anchor" parent="${side}_groin_link"

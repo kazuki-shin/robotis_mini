@@ -60,12 +60,89 @@
     <gazebo reference="${link_name}_link">
       <mu1>10000</mu1>
       <mu2>10000</mu2>
-      <kp>100.0</kp>
+      <kp>10000.0</kp>
       <kd>100.0</kd>
       <minDepth>0.001</minDepth>
       <maxContacts>100</maxContacts> 
     </gazebo>
   </xacro:macro>
+
+  <xacro:macro name="robotis_mini_upgrade_body" params="name parent xyz rpy">
+    <joint name="${name}_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+      <inertial>
+        <origin
+          xyz="-0.0091918 -0.00047008 -0.016078"
+          rpy="0 0 0" />
+        <mass
+          value="0.2437" />
+        <inertia
+          ixx="9.5353E-05"
+          ixy="-3.5005E-08"
+          ixz="-9.1096E-06"
+          iyy="6.6853E-05"
+          iyz="7.5168E-07"
+          izz="9.5174E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robotis_mini/meshes/Body.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.75294 0.75294 0.75294 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robotis_mini/meshes/Body.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="left_arm_socket_link" />
+    <joint name="left_arm_socket_joint" type="fixed">
+      <parent link="${name}_link"/>
+      <child link="left_arm_socket_link"/>
+      <origin xyz="0 0 0.038998" rpy="0 0 -1.5708" />
+    </joint>
+
+    <link name="right_arm_socket_link" />
+    <joint name="right_arm_socket_joint" type="fixed">
+      <parent link="${name}_link"/>
+      <child link="right_arm_socket_link"/>
+      <origin xyz="0 0 -0.038998" rpy="0 0 -1.5708" />
+    </joint>
+
+    <link name="left_leg_socket_link" />
+    <joint name="left_leg_socket_joint" type="fixed">
+      <parent link="${name}_link"/>
+      <child link="left_leg_socket_link"/>
+      <origin xyz="0 0.072 0.024" rpy="1.5633 -1.5708 1.5708" />
+    </joint>
+
+    <link name="right_leg_socket_link" />
+    <joint name="right_leg_socket_joint" type="fixed">
+      <parent link="${name}_link"/>
+      <child link="right_leg_socket_link"/>
+      <origin xyz="0 0.072 -0.024" rpy="1.5708 -1.5708 1.5708" />
+    </joint>
+
+  </xacro:macro>
+
 
   <xacro:macro name="robotis_mini_dmfb01" params="name parent xyz rpy">
     <joint name="${name}_joint" type="fixed">

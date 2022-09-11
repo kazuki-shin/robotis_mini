@@ -26,5 +26,12 @@
     <xacro:robotis_mini_spu5 name="r_hip_anchor" parent="body_skeleton_link"
         xyz="-0.024 -0.006 -0.033" rpy="0 0 0" />
   </xacro:macro>
+
+  <xacro:macro name="robotis_mini_body2" params="parent">
+    <xacro:robotis_mini_upgrade_body name="robotis_mini_upgrade" parent="${parent}"
+        xyz="0 0 0" rpy="-${M_PI/2} 0 0" />
+  </xacro:macro>
+
+  
   
 </robot>
